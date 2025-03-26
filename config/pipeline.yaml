@@ -1,0 +1,12 @@
+pipeline:
+  name: "test_pipeline"
+  source:
+    type: "csv"  # Simple start with CSV
+    config:
+      path: "data/raw/sales.csv"  # Path to your CSV file
+  transformation:
+    - sql: "SELECT product_id, price * 0.9 AS discounted_price FROM raw_data"
+  destination:
+    type: "csv"  # Save results to another CSV
+    config:
+      path: "data/processed/discounted_sales.csv"
